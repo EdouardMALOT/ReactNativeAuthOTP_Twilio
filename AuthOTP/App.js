@@ -1,11 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import firebase from 'firebase';
+
+import SignUpForm from './Components/SignUpForm';
+import SignInForm from './Components/SignInForm';
+import config from './private/key.json';
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    firebase.initializeApp(config);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <SignUpForm />
+        <SignInForm />
       </View>
     );
   }
@@ -16,6 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
 });
