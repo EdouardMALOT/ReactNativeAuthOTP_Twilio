@@ -15,7 +15,7 @@ class SignInForm extends Component {
 
     async handleSubmit() {
         try {
-            const response = await axios.post(`${ROOT_URL}verifyOneTimePassword`, { phone: this.state.phone, code: this.state.code });
+            let response = await axios.post(`${ROOT_URL}verifyOneTimePassword`, { phone: this.state.phone, code: this.state.code });
             firebase.auth().signInWithCustomToken(response.data.token);
         } catch (err) {
             console.log(err);
